@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_central_station,access.central.station,model_fuel_station,base.group_user,1,1,1,1
+
+access_sub_stock,access.sub.stock,model_fuel_stock,base.group_user,1,1,1,1
+
+
+access_fuel_record_in,access.fuel.record.in,model_fuel_record_in,base.group_user,1,1,1,1
+access_fuel_record_out,access.fuel.record.out,model_fuel_record_out,base.group_user,1,1,1,1
+access_fuel_category,access.fuel.category,model_fuel_category,base.group_user,1,1,1,1
+
+access_fuel_tanker_central,access.fuel.tanker.central,model_fuel_tanker,base.group_user,1,1,1,1
+access_tanker_stock,access.tanker.stock,model_tanker_stock,base.group_user,1,1,1,1

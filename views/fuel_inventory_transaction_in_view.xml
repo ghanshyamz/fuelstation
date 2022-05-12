@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="fuel_transaction_in_tree_view" model="ir.ui.view">
+            <field name="name">fuel.transaction.in.tree</field>
+            <field name="model">fuel.record.in</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Fuel IN transaction List">
+                    <field name="description" />
+                    <field name="fuel_categ" />
+                    <field name="fuel_volume" />
+                    <field name="cost_price_per_unit" />
+                    <field name="total_cost_price" />
+                    <field name="seller" />
+                    <field name="record_date" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_fuel_transaction_in" model="ir.actions.act_window">
+            <field name="name">Fuel In Transaction</field>
+            <field name="res_model">fuel.record.in</field>
+            <field name="view_mode">tree,kanban</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new In transaction
+              </p>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <!-- <record id="fuel_transaction_in_view_form" model="ir.ui.view">
+            <field name="name">fuel.transaction.in.view.form</field>
+            <field name="model">fuel.record.in</field>
+            <field name="arch" type="xml">
+                <form string="Fuel IN Transaction">
+                    <sheet>
+                    <group name="details" string="In Transaction Details">
+                        <field name="description" />
+                        <field name="fuel_categ" widget="Many2one"/>
+                        <field name="fuel_volume" />
+                        <field name="cost_price_per_unit" />
+                        <field name="total_cost_price" />
+                        <field name="seller" />
+                        <field name="record_date" />
+                        <field name="sub_station_name" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record> -->
+
+        <menuitem name="Fuel Transactions" id="fuel_transaction_menu" 
+                parent="fuel_station_root_menu"
+                sequence="2" groups="base.group_user"/>
+        <menuitem
+            id="fuel_transaction_in_menu"
+            name="In transaction"
+            parent="fuel_transaction_menu"
+            action="action_fuel_transaction_in"
+            sequence="12"
+            groups="base.group_user"/>
+
+    </data>
+</odoo>

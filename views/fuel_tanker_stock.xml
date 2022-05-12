@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="tanker_stock_tree_view" model="ir.ui.view">
+            <field name="name">tanker.stock.tree</field>
+            <field name="model">tanker.stock</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Tanker Stock List">
+                        <field name="tanker_id" />
+                        <field name="fuel_categ" />
+                        <field name="fuel_unit" />
+                        <field name="capacity" />
+                        <field name="used_capacity" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_tanker_stock" model="ir.actions.act_window">
+            <field name="name">Tanker Stock</field>
+            <field name="res_model">tanker.stock</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new Stock in Tanker
+              </p>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="tanker_stock_view_form" model="ir.ui.view">
+            <field name="name">tanker.stock.view.form</field>
+            <field name="model">tanker.stock</field>
+            <field name="arch" type="xml">
+                <form string="Tanker Stock">
+                    <sheet>
+                    <group name="details" string="Tanker Stock Details">
+                        <field name="tanker_id" widget="Many2one"/>
+                        <field name="fuel_categ" widget="Many2one"/>
+                        <field name="fuel_unit" />
+                        <field name="capacity" />
+                        <field name="used_capacity" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record>
+
+        <menuitem name="Tanker Stock" id="tanker_stock_menu" 
+                parent="fuel_station_root_menu" action="action_tanker_stock" 
+                sequence="7" groups="base.group_user"/>
+
+    </data>
+</odoo>

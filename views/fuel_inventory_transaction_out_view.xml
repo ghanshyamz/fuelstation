@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="fuel_transaction_out_tree_view" model="ir.ui.view">
+            <field name="name">fuel.transaction.out.tree</field>
+            <field name="model">fuel.record.out</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Fuel OUT transaction List">
+                    <field name="description" />
+                    <field name="fuel_categ" />
+                    <field name="selling_price_per_unit" />
+                    <field name="fuel_volume" />
+                    <field name="total_selling_price" />
+                    <field name="buyer" />
+                    <field name="record_date" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_fuel_transaction_out" model="ir.actions.act_window">
+            <field name="name">Fuel Out Transaction</field>
+            <field name="res_model">fuel.record.out</field>
+            <field name="view_mode">tree,kanban</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new Out transaction
+              </p>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <!-- <record id="fuel_transaction_out_view_form" model="ir.ui.view">
+            <field name="name">fuel.transaction.out.view.form</field>
+            <field name="model">fuel.record.out</field>
+            <field name="arch" type="xml">
+                <form string="Fuel OUT Transaction">
+                    <sheet>
+                    <group name="details" string="Out Transaction Details">
+                        
+                        <field name="description" />
+                        <field name="fuel_categ" widget="Many2one"/>
+                        <field name="selling_price_per_unit" />
+                        <field name="fuel_volume" />
+                        <field name="total_selling_price" />
+                        <field name="buyer" />
+                        <field name="record_date" />
+                        <field name="sub_station_name" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record> -->
+
+
+        <menuitem
+            id="fuel_transaction_out_menu"
+            name="Out transaction"
+            parent="fuel_transaction_menu"
+            action="action_fuel_transaction_out"
+            sequence="13"
+            groups="base.group_user"/>
+
+    </data>
+</odoo>

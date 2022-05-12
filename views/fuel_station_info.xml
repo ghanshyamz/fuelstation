@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <!-- <record id="station_info_tree_view" model="ir.ui.view">
+            <field name="name">station.info.tree</field>
+            <field name="model">fuel.station</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Fuel Station List">
+                    <field name="name" />
+                    <field name="address" />
+                    <field name="capacity" />
+                    <field name="used_capacity" />
+                    <field name="capital" />
+                </tree>
+            </field>
+        </record> -->
+
+        <!-- action -->
+        <record id="action_station_info" model="ir.actions.act_window">
+            <field name="name">Station Info</field>
+            <field name="res_model">fuel.station</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <!-- form view -->
+        <record id="station_info_view_form" model="ir.ui.view">
+            <field name="name">station.info.view.form</field>
+            <field name="model">fuel.station</field>
+            <field name="arch" type="xml">
+                <form string="Fuel Station">
+                    <sheet>
+                    <group name="details" string="Station Details">
+                        <field name="name" placeholder="Station Name"/>
+                        <field name="address" />
+                        <field name="capacity" />
+                        <field name="used_capacity" />
+                        <field name="capital" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record>
+
+        
+
+        <menuitem name="Station info" id="station_info_menu" 
+                parent="fuel_station_root_menu" action="action_station_info" 
+                sequence="6" groups="base.group_user"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="fuel_record_out_tree_view" model="ir.ui.view">
+            <field name="name">fuel.record.out.tree</field>
+            <field name="model">fuel.record.out</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Fuel OUT record List">
+                    <field name="description" />
+                    <field name="sub_station_name" />
+                    <field name="fuel_categ" />
+                    <field name="stock_id" />
+                    <field name="selling_price_per_unit" />
+                    <field name="fuel_volume" />
+                    <field name="total_selling_price" />
+                    <field name="buyer" />
+                    <field name="record_date" />
+                </tree>
+            </field>
+        </record>
+
+        <!--search-->
+        <record id="fuel_record_out_view_search" model="ir.ui.view">
+            <field name="name">fuel.record.out.view.search</field>
+            <field name="model">fuel.record.out</field>
+            <field name="arch" type="xml">
+                <search string="Out filters">
+                    <filter string="Current Day" name="current_day" 
+                    domain="[('record_date','&gt;',context_today().strftime('%Y-%m-%d 00:00:00')),
+                     ('record_date','&lt;=',context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+
+                    <filter string="Current Week" name="current_week" 
+                    domain="[('record_date','&gt;',(context_today()-relativedelta(days=7)).strftime('%Y-%m-%d 23:59:59')),
+                     ('record_date','&lt;=',context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    
+                    <filter string="Current Month" name="current_month" 
+                    domain="[('record_date','&gt;',(context_today()-relativedelta(months=1)).strftime('%Y-%m-%d 23:59:59')),
+                     ('record_date','&lt;=',context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    
+                    <filter string="Current Year" name="current_year" 
+                    domain="[('record_date','&gt;',(context_today()-relativedelta(years=1)).strftime('%Y-%m-%d 23:59:59')),
+                     ('record_date','&lt;=',context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_fuel_record_out" model="ir.actions.act_window">
+            <field name="name">Fuel Out Record</field>
+            <field name="res_model">fuel.record.out</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new Out record
+              </p>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="fuel_record_out_view_form" model="ir.ui.view">
+            <field name="name">fuel.record.out.view.form</field>
+            <field name="model">fuel.record.out</field>
+            <field name="arch" type="xml">
+                <form string="Fuel OUT Record">
+                    <sheet>
+                    <group name="details" string="Out Record Details">
+                        <field name="description" />
+                        <field name="sub_station_name" widget="Many2one"/>
+                        <field name="fuel_categ" widget="Many2one"/>
+                        <field name="stock_id" />
+                        <field name="selling_price_per_unit" />
+                        <field name="fuel_volume" />
+                        <field name="total_selling_price" />
+                        <field name="buyer" />
+                        <field name="record_date" />
+                        <field name="avl_stock" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record>
+
+        <menuitem
+            id="fuel_record_out_menu"
+            name="Out records"
+            parent="fuel_record_menu"
+            action="action_fuel_record_out"
+            sequence="11"
+            groups="base.group_user"/>
+
+    </data>
+</odoo>

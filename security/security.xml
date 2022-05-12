@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="fuel_station_management" model="ir.module.category">
+        <field name="name">station</field>
+        <field name="description">Helps to hande Sub Stations</field>
+        <field name="sequence">1</field>
+
+    </record>
+
+    <record id="central_group" model="res.groups">
+        <field name="name">Central Portal</field>
+        <field name="category_id" ref="fuel_station_management" />
+    </record>
+
+    <record id="sub_station_group" model="res.groups">
+        <field name="name">Sub Station Portal</field>
+        <field name="category_id" ref="fuel_station_management" />
+    </record>
+
+    <record id="central_tanker_user" model="ir.rule">
+        <field name="name">Central Station Tanker User</field>
+        <field name="model_id" ref="model_fuel_tanker" />
+        <!-- <field name="groups" eval="[(4,ref(‘fuelstation.central_group/user’))]" /> -->
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_unlink" eval="1" />
+        <field name="domain_force">[]</field>
+    </record>
+
+    <record id="sub_station_tanker_user" model="ir.rule">
+        <field name="name">Sub Station Tanker User</field>
+        <field name="model_id" ref="model_fuel_tanker" />
+        <!-- <field name="groups" eval="[(4, ref(‘fuelstation.sub_station_group/user’))]" /> -->
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_unlink" eval="0" />
+        <field name="domain_force">[]</field>
+    </record>
+
+    <!-- <record id="central_user" model="ir.rule">
+        <field name="name">Central Station User</field>
+        <field name="model_id" ref="model_fuel_station" />
+        <!- <field name="groups" eval="[(4,ref(‘fuelstation.central_group/user’))]" /> ->
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_unlink" eval="1" />
+        <field name="domain_force">[]</field>
+    </record> -->
+
+    <record id="sub_station_user" model="ir.rule">
+        <field name="name">Sub Station User</field>
+        <field name="model_id" ref="model_fuel_station" />
+        <!-- <field name="groups" eval="‘fuelstation.sub_station_group" /> -->
+
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_unlink" eval="0" />
+        <field name="domain_force">[]</field>
+        <!-- <field name="domain_force" eval="[('name','=','Pune')]" /> -->
+    </record>
+
+</odoo>

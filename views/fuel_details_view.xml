@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="fuel_category_tree_view" model="ir.ui.view">
+            <field name="name">fuel.category.tree</field>
+            <field name="model">fuel.category</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree string="Fuel Category List">
+                    <field name="name" />
+                    <field name="unit" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- action -->
+        <record id="action_fuel_category" model="ir.actions.act_window">
+            <field name="name">Fuel Category</field>
+            <field name="res_model">fuel.category</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new Fuel Category
+              </p>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="fuel_category_view_form" model="ir.ui.view">
+            <field name="name">fuel.category.view.form</field>
+            <field name="model">fuel.category</field>
+            <field name="arch" type="xml">
+                <form string="Fuel Category">
+                    <sheet>
+                    <group name="details" string="Fuel Category Details">
+                        <field name="name" />
+                        <field name="unit" />
+                    </group>
+                        
+                        <notebook>
+                            <page>
+                                <group>
+                            
+                                </group>
+                            </page>
+                        </notebook>                   
+                    </sheet>
+                </form>                   
+            </field>
+        </record>
+
+
+        <menuitem name="Fuel Details" id="fuel_details_menu" 
+                parent="fuel_station_root_menu" action="action_fuel_category" 
+                sequence="5" groups="base.group_user"/>
+
+    </data>
+</odoo>
